@@ -1,5 +1,5 @@
-import type { ProductRepositoryInterface } from '#domain/product/product_repository_interface'
-import type { CreateProductInput } from '#domain/product/product_types'
+import type { ProductRepositoryInterface } from "#domain/product/product_repository_interface"
+import type { CreateProductInput } from "#domain/product/product_types"
 
 export class CreateProductUseCase {
   constructor(private productRepository: ProductRepositoryInterface) {}

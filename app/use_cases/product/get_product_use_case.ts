@@ -1,4 +1,4 @@
-import type { ProductRepositoryInterface } from '#domain/product/product_repository_interface'
+import type { ProductRepositoryInterface } from "#domain/product/product_repository_interface"
 
 export class GetProductUseCase {
   constructor(private productRepository: ProductRepositoryInterface) {}

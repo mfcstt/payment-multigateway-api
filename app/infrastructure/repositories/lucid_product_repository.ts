@@ -1,6 +1,6 @@
-import Product from '#models/product'
-import type { ProductRepositoryInterface } from '#domain/product/product_repository_interface'
-import type { CreateProductInput, UpdateProductInput } from '#domain/product/product_types'
+import Product from "#models/product"
+import type { ProductRepositoryInterface } from "#domain/product/product_repository_interface"
+import type { CreateProductInput, UpdateProductInput } from "#domain/product/product_types"
 
 export class LucidProductRepository implements ProductRepositoryInterface {
   async findAll(): Promise<Product[]> {

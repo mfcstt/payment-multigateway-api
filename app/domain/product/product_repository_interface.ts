@@ -1,5 +1,5 @@
-import type Product from '#models/product'
-import type { CreateProductInput, UpdateProductInput } from '#domain/product/product_types'
+import type Product from "#models/product"
+import type { CreateProductInput, UpdateProductInput } from "#domain/product/product_types"
 
 export interface ProductRepositoryInterface {
   findAll(): Promise<Product[]>
