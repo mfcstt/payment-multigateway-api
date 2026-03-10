@@ -14,6 +14,7 @@ export type ScannedRoutes = {
     'product.get_all': { paramsTuple?: []; params?: {} }
     'product.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'gateway.toggle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'gateway.update_priority': { paramsTuple: [ParamValue,ParamValue]; params: {'id': ParamValue,'priority': ParamValue} }
   }
   GET: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
@@ -34,6 +35,7 @@ export type ScannedRoutes = {
   PUT: {
     'product.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'gateway.toggle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'gateway.update_priority': { paramsTuple: [ParamValue,ParamValue]; params: {'id': ParamValue,'priority': ParamValue} }
   }
   DELETE: {
     'product.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

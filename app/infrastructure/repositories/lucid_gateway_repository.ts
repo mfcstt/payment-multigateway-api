@@ -19,6 +19,22 @@ export class LucidGatewayRepository implements PaymentGatewayInterface {
     return gateway
   }
 
-      
+  async updatePriority(id: number, priority: number): Promise<Gateway> {
+    
+    const gatewayToUpdate = await Gateway.findOrFail(id)
+    const existingGateway = await Gateway.query().where('priority', priority).first()
+
+    if (existingGateway) {
+      const tempPriority = gatewayToUpdate.priority
+      gatewayToUpdate.priority = existingGateway.priority
+      existingGateway.priority = tempPriority
+
+     await existingGateway.save()  
+    }
+
+    await gatewayToUpdate.save()
+        return gatewayToUpdate
+    }
+ 
 }
 

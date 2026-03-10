@@ -50,6 +50,7 @@ router
 router 
   .group(() => {
     router.put('/:id', [controllers.Gateway, 'toggle'])
+    router.put('/:id/priority/:priority', [controllers.Gateway, 'updatePriority'])
   })
   .prefix('/gateways')
   .use(middleware.auth())

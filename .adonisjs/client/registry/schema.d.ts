@@ -127,4 +127,16 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['toggle']>>>
     }
   }
+  'gateway.update_priority': {
+    methods: ["PUT"]
+    pattern: '/gateways/:id/priority/:priority'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue, ParamValue]
+      params: { id: ParamValue; priority: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['updatePriority']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['updatePriority']>>>
+    }
+  }
 }

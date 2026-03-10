@@ -25,5 +25,6 @@ export interface ApiDefinition {
   }
   gateway: {
     toggle: typeof routes['gateway.toggle']
+    updatePriority: typeof routes['gateway.update_priority']
   }
 }

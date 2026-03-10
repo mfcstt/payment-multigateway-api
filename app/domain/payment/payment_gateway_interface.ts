@@ -5,5 +5,5 @@ export interface PaymentGatewayInterface {
   // createTransaction(data: CreateTransactionInput): Promise<TransactionOutput>
   // refund(externalId: string): Promise<void>
   toggleGateway(id: number): Promise<Gateway>
-  // updatePriority({id, priority}: GatewayConfig): Promise<void>
+  updatePriority(id: number, priority: number): Promise<Gateway>
 }
