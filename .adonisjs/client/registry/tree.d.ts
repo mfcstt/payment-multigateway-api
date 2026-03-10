@@ -27,4 +27,13 @@ export interface ApiDefinition {
     toggle: typeof routes['gateway.toggle']
     updatePriority: typeof routes['gateway.update_priority']
   }
+  purchase: {
+    create: typeof routes['purchase.create']
+    listAll: typeof routes['purchase.list_all']
+    detail: typeof routes['purchase.detail']
+  }
+  client: {
+    getAll: typeof routes['client.get_all']
+    clientPurchases: typeof routes['client.client_purchases']
+  }
 }

@@ -26,4 +26,13 @@ export class LucidProductRepository implements ProductRepositoryInterface {
     const product = await Product.findOrFail(id)
     await product.delete()
   }
+
+  async calculeTotalAmount(products: { product_id: number, quantity: number }[]): Promise<number> {
+    let total = 0
+    for (const item of products) {
+      const product = await this.findById(item.product_id)
+      total += product.amount * item.quantity
+    }
+    return total
+  }
 }

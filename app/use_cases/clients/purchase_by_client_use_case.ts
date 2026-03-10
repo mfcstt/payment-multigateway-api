@@ -1,0 +1,22 @@
+import type { ClientRepositoryInterface } from '#domain/client/client_repository_interface'
+import type { TransactionRepositoryInterface } from '#domain/transactions/transaction_repository_interface'
+
+export class PurchaseByClientUseCase {
+  constructor(
+    private clientRepository: ClientRepositoryInterface,
+    private transactionRepository: TransactionRepositoryInterface
+  ) {}
+
+  async execute(clientId: number) {
+    const client = await this.clientRepository.findById(clientId)
+    if (!client) {
+      throw new Error('Cliente não encontrado')
+    }
+
+    const transactions = await this.transactionRepository.findAll(clientId)
+    return {
+      client,
+      transactions,
+    }
+  }
+}

@@ -7,4 +7,5 @@ export interface ProductRepositoryInterface {
   create(data: CreateProductInput): Promise<Product>
   update(id: number, data: UpdateProductInput): Promise<Product>
   delete(id: number): Promise<void>
+  calculeTotalAmount(products: { product_id: number, quantity: number }[]): Promise<number>
 }

@@ -55,5 +55,23 @@ router
   .prefix('/gateways')
   .use(middleware.auth())
 
+  router
+  .group(() => {
+    router.post('/', [controllers.Purchase, 'create'])
+    router.get('/', [controllers.Purchase, 'listAll'])
+    router.get('/:id', [controllers.Purchase, 'detail'])
+  })
+  .prefix('/purchases')
+  .use(middleware.auth())
+
+router
+  .group(() => {
+    router.get('/', [controllers.Client, 'getAll'])
+    router.get('/:id/purchases', [controllers.Client, 'clientPurchases'])
+  })
+  .prefix('/clients')
+  .use(middleware.auth())
+
+
     
     

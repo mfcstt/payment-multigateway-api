@@ -72,6 +72,36 @@ const routes = {
     tokens: [{"old":"/gateways/:id/priority/:priority","type":0,"val":"gateways","end":""},{"old":"/gateways/:id/priority/:priority","type":1,"val":"id","end":""},{"old":"/gateways/:id/priority/:priority","type":0,"val":"priority","end":""},{"old":"/gateways/:id/priority/:priority","type":1,"val":"priority","end":""}],
     types: placeholder as Registry['gateway.update_priority']['types'],
   },
+  'purchase.create': {
+    methods: ["POST"],
+    pattern: '/purchases',
+    tokens: [{"old":"/purchases","type":0,"val":"purchases","end":""}],
+    types: placeholder as Registry['purchase.create']['types'],
+  },
+  'purchase.list_all': {
+    methods: ["GET","HEAD"],
+    pattern: '/purchases',
+    tokens: [{"old":"/purchases","type":0,"val":"purchases","end":""}],
+    types: placeholder as Registry['purchase.list_all']['types'],
+  },
+  'purchase.detail': {
+    methods: ["GET","HEAD"],
+    pattern: '/purchases/:id',
+    tokens: [{"old":"/purchases/:id","type":0,"val":"purchases","end":""},{"old":"/purchases/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['purchase.detail']['types'],
+  },
+  'client.get_all': {
+    methods: ["GET","HEAD"],
+    pattern: '/clients',
+    tokens: [{"old":"/clients","type":0,"val":"clients","end":""}],
+    types: placeholder as Registry['client.get_all']['types'],
+  },
+  'client.client_purchases': {
+    methods: ["GET","HEAD"],
+    pattern: '/clients/:id/purchases',
+    tokens: [{"old":"/clients/:id/purchases","type":0,"val":"clients","end":""},{"old":"/clients/:id/purchases","type":1,"val":"id","end":""},{"old":"/clients/:id/purchases","type":0,"val":"purchases","end":""}],
+    types: placeholder as Registry['client.client_purchases']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

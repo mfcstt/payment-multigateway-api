@@ -9,7 +9,7 @@ import {
   deleteProductUseCase,
   listProductsUseCase,
   getProductUseCase,
-} from '#use_cases/product_use_cases'
+} from '#use_cases/make_product_use_cases'
 
 export default class ProductController {
 

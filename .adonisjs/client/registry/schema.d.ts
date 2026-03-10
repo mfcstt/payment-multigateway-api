@@ -139,4 +139,64 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['updatePriority']>>>
     }
   }
+  'purchase.create': {
+    methods: ["POST"]
+    pattern: '/purchases'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/purchase').createPurchaseValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/purchase').createPurchaseValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['create']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['create']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'purchase.list_all': {
+    methods: ["GET","HEAD"]
+    pattern: '/purchases'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['listAll']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['listAll']>>>
+    }
+  }
+  'purchase.detail': {
+    methods: ["GET","HEAD"]
+    pattern: '/purchases/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['detail']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['detail']>>>
+    }
+  }
+  'client.get_all': {
+    methods: ["GET","HEAD"]
+    pattern: '/clients'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/client_controller').default['getAll']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/client_controller').default['getAll']>>>
+    }
+  }
+  'client.client_purchases': {
+    methods: ["GET","HEAD"]
+    pattern: '/clients/:id/purchases'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/client_controller').default['clientPurchases']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/client_controller').default['clientPurchases']>>>
+    }
+  }
 }
