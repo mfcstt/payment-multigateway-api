@@ -13,7 +13,7 @@ export type ScannedRoutes = {
     'product.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'product.get_all': { paramsTuple?: []; params?: {} }
     'product.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'purchase.create': { paramsTuple?: []; params?: {} }
+    'gateway.toggle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   GET: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
@@ -30,10 +30,10 @@ export type ScannedRoutes = {
     'auth.access_token.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
     'product.create': { paramsTuple?: []; params?: {} }
-    'purchase.create': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'product.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'gateway.toggle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'product.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

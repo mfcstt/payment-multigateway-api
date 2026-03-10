@@ -4,13 +4,9 @@
  */
 
 export const controllers = {
-  users: {#controllers/purchase/purchase_controller
-    AccessToken: () => import('#controllers/users/access_token_controller'),
-    NewAccount: () => import('#controllers/users/new_account_controller'),
-    Product: () => import('#controllers/users/product_controller'),
-    Profile: () => import('#controllers/users/profile_controller'),
-  },
-  purchase: {
-    Purchase: () => import('#controllers/purchase/purchase_controller'),
-  },
+  AccessToken: () => import('#controllers/access_token_controller'),
+  Gateway: () => import('#controllers/gateway_controller'),
+  NewAccount: () => import('#controllers/new_account_controller'),
+  Product: () => import('#controllers/product_controller'),
+  Profile: () => import('#controllers/profile_controller'),
 }

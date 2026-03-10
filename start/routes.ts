@@ -46,13 +46,13 @@ router
   .prefix('/products')
   .use(middleware.auth())
 
-  router
-  .group(() => {
-    router.post('/', [controllers.Purchase, 'create'])
-  })
-  .prefix('/purchase')
-  .use(middleware.auth())
 
+router 
+  .group(() => {
+    router.put('/:id', [controllers.Gateway, 'toggle'])
+  })
+  .prefix('/gateways')
+  .use(middleware.auth())
 
     
     

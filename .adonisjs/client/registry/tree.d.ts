@@ -23,7 +23,7 @@ export interface ApiDefinition {
     getAll: typeof routes['product.get_all']
     getById: typeof routes['product.get_by_id']
   }
-  purchase: {
-    create: typeof routes['purchase.create']
+  gateway: {
+    toggle: typeof routes['gateway.toggle']
   }
 }
