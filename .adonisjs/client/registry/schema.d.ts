@@ -119,24 +119,24 @@ export interface Registry {
     methods: ["PUT"]
     pattern: '/gateways/:id'
     types: {
-      body: {}
+      body: ExtractBody<InferInput<(typeof import('#validators/gateway').gatewayToggleValidator)>>
       paramsTuple: [ParamValue]
       params: { id: ParamValue }
-      query: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/gateway').gatewayToggleValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['toggle']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['toggle']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['toggle']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'gateway.update_priority': {
     methods: ["PUT"]
     pattern: '/gateways/:id/priority/:priority'
     types: {
-      body: {}
+      body: ExtractBody<InferInput<(typeof import('#validators/gateway').gatewayPriorityValidator)>>
       paramsTuple: [ParamValue, ParamValue]
       params: { id: ParamValue; priority: ParamValue }
-      query: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/gateway').gatewayPriorityValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['updatePriority']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['updatePriority']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/gateway_controller').default['updatePriority']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'purchase.create': {
@@ -206,9 +206,9 @@ export interface Registry {
       body: {}
       paramsTuple: [ParamValue]
       params: { id: ParamValue }
-      query: {}
+      query: ExtractQueryForGet<InferInput<(typeof import('#validators/client').clientIdValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/client_controller').default['clientPurchases']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/client_controller').default['clientPurchases']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/client_controller').default['clientPurchases']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'user.get_all': {

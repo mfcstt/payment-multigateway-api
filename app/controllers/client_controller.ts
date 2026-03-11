@@ -1,6 +1,7 @@
 import { getClientPurchasesUseCase, listClientsUseCase } from '#use_cases/make_client_use_case'
 import Client from '#models/client'
 import type { HttpContext } from '@adonisjs/core/http'
+import { clientIdValidator } from '#validators/client'
 
 export default class ClientController {
   async getAll({ response, bouncer }: HttpContext) {
@@ -11,6 +12,8 @@ export default class ClientController {
   }
 
   async clientPurchases({ params, response, auth }: HttpContext) {
+    await clientIdValidator.validate(params)
+
     const clientId = Number(params.id)
     const user = auth.user!
 
