@@ -2,12 +2,16 @@ import { getClientPurchasesUseCase, listClientsUseCase } from '#use_cases/make_c
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class ClientController {
-  async getAll({ response }: HttpContext) {
+  async getAll({ response, bouncer }: HttpContext) {
+    await bouncer.with('Policy').authorize('canManageClients')
+
     const clients = await listClientsUseCase.execute()
     return response.ok(clients)
   }
 
-  async clientPurchases({ params, response }: HttpContext) {
+  async clientPurchases({ params, response, bouncer }: HttpContext) {
+    await bouncer.with('Policy').authorize('canManageClients')
+    
     const clientId = Number(params.id)
     const purchases = await getClientPurchasesUseCase.execute(clientId)
     return response.ok(purchases)

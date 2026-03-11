@@ -6,29 +6,29 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
-  'auth.new_account.store': {
+  'auth.user.sign_up': {
     methods: ["POST"],
     pattern: '/auth/signup',
     tokens: [{"old":"/auth/signup","type":0,"val":"auth","end":""},{"old":"/auth/signup","type":0,"val":"signup","end":""}],
-    types: placeholder as Registry['auth.new_account.store']['types'],
+    types: placeholder as Registry['auth.user.sign_up']['types'],
   },
-  'auth.access_token.store': {
+  'auth.user.login': {
     methods: ["POST"],
     pattern: '/auth/login',
     tokens: [{"old":"/auth/login","type":0,"val":"auth","end":""},{"old":"/auth/login","type":0,"val":"login","end":""}],
-    types: placeholder as Registry['auth.access_token.store']['types'],
+    types: placeholder as Registry['auth.user.login']['types'],
   },
-  'auth.access_token.destroy': {
+  'auth.user.logout': {
     methods: ["POST"],
     pattern: '/auth/logout',
     tokens: [{"old":"/auth/logout","type":0,"val":"auth","end":""},{"old":"/auth/logout","type":0,"val":"logout","end":""}],
-    types: placeholder as Registry['auth.access_token.destroy']['types'],
+    types: placeholder as Registry['auth.user.logout']['types'],
   },
-  'profile.profile.show': {
+  'profile.user.profile': {
     methods: ["GET","HEAD"],
     pattern: '/account/profile',
     tokens: [{"old":"/account/profile","type":0,"val":"account","end":""},{"old":"/account/profile","type":0,"val":"profile","end":""}],
-    types: placeholder as Registry['profile.profile.show']['types'],
+    types: placeholder as Registry['profile.user.profile']['types'],
   },
   'product.create': {
     methods: ["POST"],

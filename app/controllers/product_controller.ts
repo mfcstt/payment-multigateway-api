@@ -26,7 +26,7 @@ export default class ProductController {
 
 
   async create({ request, response, bouncer }: HttpContext) {
-    await bouncer.with('ProductPolicy').authorize('canManage')
+    await bouncer.with('Policy').authorize('canManageProducts')
 
     const payload = await request.validateUsing(createProductValidator)
     const product = await createProductUseCase.execute(payload)
@@ -35,7 +35,7 @@ export default class ProductController {
   }
 
   async update({ request, response, params, bouncer }: HttpContext) {
-    await bouncer.with('ProductPolicy').authorize('canManage')
+    await bouncer.with('Policy').authorize('canManageProducts')
 
     const id = Number(params.id)
     const payload = await request.validateUsing(updateProductValidator)
@@ -46,7 +46,7 @@ export default class ProductController {
 
 
   async delete({ response, params, bouncer }: HttpContext) {
-    await bouncer.with('ProductPolicy').authorize('canManage')
+    await bouncer.with('Policy').authorize('canManageProducts')
 
     await deleteProductUseCase.execute(Number(params.id))
 

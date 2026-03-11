@@ -9,7 +9,9 @@ const updatePriorityUseCase = new UpdatePriorityUseCase(lucidGatewayRepository)
 
 export default class GatewayController {
   
-  public async toggle({ response, params}: HttpContext){
+  public async toggle({ response, params, bouncer }: HttpContext){
+    await bouncer.with('Policy').authorize('canManageGateways')
+    
     const id = Number(params.id)
 
     const gateway = await toggleGatewayUseCase.execute(id)
@@ -17,7 +19,9 @@ export default class GatewayController {
     return response.ok(gateway)
 }
 
-  public async updatePriority({response, params }: HttpContext){
+  public async updatePriority({response, params, bouncer }: HttpContext){
+    await bouncer.with('Policy').authorize('canManageGateways')
+
     const id = Number(params.id)
     const priority = Number(params.priority)
 

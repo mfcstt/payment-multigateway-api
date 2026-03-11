@@ -4,10 +4,10 @@ type ParamValue = string | number | bigint | boolean
 
 export type ScannedRoutes = {
   ALL: {
-    'auth.new_account.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
-    'profile.profile.show': { paramsTuple?: []; params?: {} }
+    'auth.user.sign_up': { paramsTuple?: []; params?: {} }
+    'auth.user.login': { paramsTuple?: []; params?: {} }
+    'auth.user.logout': { paramsTuple?: []; params?: {} }
+    'profile.user.profile': { paramsTuple?: []; params?: {} }
     'product.create': { paramsTuple?: []; params?: {} }
     'product.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'product.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
@@ -23,7 +23,7 @@ export type ScannedRoutes = {
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   GET: {
-    'profile.profile.show': { paramsTuple?: []; params?: {} }
+    'profile.user.profile': { paramsTuple?: []; params?: {} }
     'product.get_all': { paramsTuple?: []; params?: {} }
     'product.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'purchase.list_all': { paramsTuple?: []; params?: {} }
@@ -32,7 +32,7 @@ export type ScannedRoutes = {
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   HEAD: {
-    'profile.profile.show': { paramsTuple?: []; params?: {} }
+    'profile.user.profile': { paramsTuple?: []; params?: {} }
     'product.get_all': { paramsTuple?: []; params?: {} }
     'product.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'purchase.list_all': { paramsTuple?: []; params?: {} }
@@ -41,9 +41,9 @@ export type ScannedRoutes = {
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   POST: {
-    'auth.new_account.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
+    'auth.user.sign_up': { paramsTuple?: []; params?: {} }
+    'auth.user.login': { paramsTuple?: []; params?: {} }
+    'auth.user.logout': { paramsTuple?: []; params?: {} }
     'product.create': { paramsTuple?: []; params?: {} }
     'purchase.create': { paramsTuple?: []; params?: {} }
     'purchase.refund': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
