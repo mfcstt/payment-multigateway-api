@@ -35,17 +35,19 @@ export default class PurchaseController {
     return response.ok(result)
   }
 
-  async detail({ params, response, auth }: HttpContext) {
+  async detail({ params, response, auth, bouncer }: HttpContext) {
     const id = Number(params.id)
     const user = auth.user!
-    const isPrivileged = ['admin', 'manager', 'finance'].includes(user.role)
 
-    if (!isPrivileged) {
-      const client = await Client.findBy('email', user.email)
-      if (!client) {
-        return response.forbidden({ message: 'Access denied' })
-      }
+    const client = await Client.findBy('email', user.email)
+    if (!client) {
+      return response.forbidden({ message: 'Access denied' })
+    }
 
+    try {
+      await bouncer.with('Policy').authorize('canView')
+    } catch {
+      await bouncer.with('Policy').authorize('canViewOwnPurchase')
       const purchase = await purchaseDetailUseCase.execute(id)
       if (!purchase || purchase.clientId !== client.id) {
         return response.forbidden({ message: 'Access denied' })

@@ -3,7 +3,6 @@ import { BasePolicy } from '@adonisjs/bouncer'
 import type { AuthorizerResponse } from '@adonisjs/bouncer/types'
 
 export default class MainPolicy extends BasePolicy {
-
   canManageProducts(user: User): AuthorizerResponse {
     return ['admin', 'manager', 'finance'].includes(user.role)
   }
@@ -30,5 +29,13 @@ export default class MainPolicy extends BasePolicy {
 
   canView(user: User): AuthorizerResponse {
     return ['admin', 'manager', 'finance'].includes(user.role)
+  }
+
+  canViewOwnClientPurchases(user: User): AuthorizerResponse {
+    return user.role === 'user'
+  }
+
+  canViewOwnPurchase(user: User): AuthorizerResponse {
+    return user.role === 'user'
   }
 }
