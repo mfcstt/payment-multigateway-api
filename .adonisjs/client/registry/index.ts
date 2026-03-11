@@ -90,6 +90,12 @@ const routes = {
     tokens: [{"old":"/purchases/:id","type":0,"val":"purchases","end":""},{"old":"/purchases/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['purchase.detail']['types'],
   },
+  'purchase.refund': {
+    methods: ["POST"],
+    pattern: '/purchases/:id/refund',
+    tokens: [{"old":"/purchases/:id/refund","type":0,"val":"purchases","end":""},{"old":"/purchases/:id/refund","type":1,"val":"id","end":""},{"old":"/purchases/:id/refund","type":0,"val":"refund","end":""}],
+    types: placeholder as Registry['purchase.refund']['types'],
+  },
   'client.get_all': {
     methods: ["GET","HEAD"],
     pattern: '/clients',

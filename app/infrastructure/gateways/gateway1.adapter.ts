@@ -39,7 +39,7 @@ export class Gateway1Adapter implements PaymentAdapterInterface {
 
   refund(externalId: string): Promise<void> {
     return axios.post(
-      `${GATEWAY_1_BASE_URL}/transaction/${externalId}/charge_back`,
+      `${GATEWAY_1_BASE_URL}/transactions/${externalId}/charge_back`,
       {},
       {
         headers: {

@@ -5,6 +5,7 @@ import { LucidProductRepository } from '#infrastructure/repositories/lucid_produ
 import ProcessPurchaseUseCase from './purchase/process_purchase_use_case.js'
 import ListAllPurchasesUseCase from './purchase/list_all_purchases_use_case.ts'
 import PurchaseDetailUseCase from './purchase/purchase_detail_use_case.ts'
+import RefundPurchaseUseCase from './purchase/refund_purchase_use_case.ts'
 
 const gatewayRepository = new LucidGatewayRepository()
 const transactionRepository = new LucidTransactionRepository()
@@ -17,7 +18,6 @@ export const processPurchaseUseCase = new ProcessPurchaseUseCase(
   clientRepository,
   productRepository
 )
-
 export const listAllPurchasesUseCase = new ListAllPurchasesUseCase(transactionRepository)
-
 export const purchaseDetailUseCase = new PurchaseDetailUseCase(transactionRepository)
+export const refundPurchaseUseCase = new RefundPurchaseUseCase(gatewayRepository, transactionRepository)

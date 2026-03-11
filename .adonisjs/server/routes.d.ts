@@ -18,6 +18,7 @@ export type ScannedRoutes = {
     'purchase.create': { paramsTuple?: []; params?: {} }
     'purchase.list_all': { paramsTuple?: []; params?: {} }
     'purchase.detail': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'purchase.refund': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'client.get_all': { paramsTuple?: []; params?: {} }
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
@@ -45,6 +46,7 @@ export type ScannedRoutes = {
     'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
     'product.create': { paramsTuple?: []; params?: {} }
     'purchase.create': { paramsTuple?: []; params?: {} }
+    'purchase.refund': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   PUT: {
     'product.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

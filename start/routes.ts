@@ -60,6 +60,7 @@ router
     router.post('/', [controllers.Purchase, 'create'])
     router.get('/', [controllers.Purchase, 'listAll'])
     router.get('/:id', [controllers.Purchase, 'detail'])
+    router.post('/:id/refund', [controllers.Purchase, 'refund'])
   })
   .prefix('/purchases')
   .use(middleware.auth())

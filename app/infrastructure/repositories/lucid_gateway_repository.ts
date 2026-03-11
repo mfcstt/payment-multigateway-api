@@ -41,6 +41,10 @@ export class LucidGatewayRepository implements PaymentGatewayInterface {
     .where('is_active', true)
     .orderBy('priority', 'asc')
     }
+
+    async findById(id: number): Promise<Gateway | null> {
+      return await Gateway.find(id)
+    }
  
 }
 

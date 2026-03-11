@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { createPurchaseValidator } from '#validators/purchase'
-import { listAllPurchasesUseCase, processPurchaseUseCase, purchaseDetailUseCase } from '#use_cases/make_purchase_use_cases'
+import { listAllPurchasesUseCase, processPurchaseUseCase, purchaseDetailUseCase, refundPurchaseUseCase } from '#use_cases/make_purchase_use_cases'
 
 export default class PurchaseController {
   async create({ request, response, auth }: HttpContext) {
@@ -33,4 +33,10 @@ async detail({ params, response }: HttpContext) {
     const result = await purchaseDetailUseCase.execute(id)
     return response.ok(result)
   }
+
+  async refund({params, response}: HttpContext) {
+    const id = Number(params.id)
+    const result = await refundPurchaseUseCase.execute(id)
+    return response.ok(result)
+}
 }

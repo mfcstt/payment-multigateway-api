@@ -175,6 +175,18 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['detail']>>>
     }
   }
+  'purchase.refund': {
+    methods: ["POST"]
+    pattern: '/purchases/:id/refund'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['refund']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['refund']>>>
+    }
+  }
   'client.get_all': {
     methods: ["GET","HEAD"]
     pattern: '/clients'

@@ -31,6 +31,7 @@ export interface ApiDefinition {
     create: typeof routes['purchase.create']
     listAll: typeof routes['purchase.list_all']
     detail: typeof routes['purchase.detail']
+    refund: typeof routes['purchase.refund']
   }
   client: {
     getAll: typeof routes['client.get_all']
