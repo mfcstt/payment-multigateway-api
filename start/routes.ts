@@ -15,25 +15,24 @@ router.get('/', () => {
   return { hello: 'world' }
 })
 
-router
-  .group(() => {
-    router
-      .group(() => {
-        router.post('signup', [controllers.User, 'signUp'])
-        router.post('login', [controllers.User, 'login'])
-        router.post('logout', [controllers.User, 'logout']).use(middleware.auth())
-      })
-      .prefix('auth')
-      .as('auth')
+router.group(() => {
+  router
+    .group(() => {
+      router.post('signup', [controllers.User, 'signUp'])
+      router.post('login', [controllers.User, 'login'])
+      router.post('logout', [controllers.User, 'logout']).use(middleware.auth())
+    })
+    .prefix('auth')
+    .as('auth')
 
-    router
-      .group(() => {
-        router.get('/profile', [controllers.User, 'profile'])
-      })
-      .prefix('account')
-      .as('profile')
-      .use(middleware.auth())
-  })
+  router
+    .group(() => {
+      router.get('/profile', [controllers.User, 'profile'])
+    })
+    .prefix('account')
+    .as('profile')
+    .use(middleware.auth())
+})
 
 router
   .group(() => {
@@ -46,8 +45,7 @@ router
   .prefix('/products')
   .use(middleware.auth())
 
-
-router 
+router
   .group(() => {
     router.put('/:id', [controllers.Gateway, 'toggle'])
     router.put('/:id/priority/:priority', [controllers.Gateway, 'updatePriority'])
@@ -55,7 +53,7 @@ router
   .prefix('/gateways')
   .use(middleware.auth())
 
-  router
+router
   .group(() => {
     router.post('/', [controllers.Purchase, 'create'])
     router.get('/', [controllers.Purchase, 'listAll'])
@@ -73,6 +71,12 @@ router
   .prefix('/clients')
   .use(middleware.auth())
 
-
-    
-    
+router
+  .group(() => {
+    router.get('/', [controllers.User, 'getAll'])
+    router.get('/:id', [controllers.User, 'getById'])
+    router.put('/:id', [controllers.User, 'update'])
+    router.delete('/:id', [controllers.User, 'delete'])
+  })
+  .prefix('/users')
+  .use(middleware.auth())

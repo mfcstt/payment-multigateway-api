@@ -108,6 +108,30 @@ const routes = {
     tokens: [{"old":"/clients/:id/purchases","type":0,"val":"clients","end":""},{"old":"/clients/:id/purchases","type":1,"val":"id","end":""},{"old":"/clients/:id/purchases","type":0,"val":"purchases","end":""}],
     types: placeholder as Registry['client.client_purchases']['types'],
   },
+  'user.get_all': {
+    methods: ["GET","HEAD"],
+    pattern: '/users',
+    tokens: [{"old":"/users","type":0,"val":"users","end":""}],
+    types: placeholder as Registry['user.get_all']['types'],
+  },
+  'user.get_by_id': {
+    methods: ["GET","HEAD"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['user.get_by_id']['types'],
+  },
+  'user.update': {
+    methods: ["PUT"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['user.update']['types'],
+  },
+  'user.delete': {
+    methods: ["DELETE"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['user.delete']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

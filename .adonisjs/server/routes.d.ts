@@ -21,6 +21,10 @@ export type ScannedRoutes = {
     'purchase.refund': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'client.get_all': { paramsTuple?: []; params?: {} }
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'user.get_all': { paramsTuple?: []; params?: {} }
+    'user.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'user.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'user.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   GET: {
     'profile.user.profile': { paramsTuple?: []; params?: {} }
@@ -30,6 +34,8 @@ export type ScannedRoutes = {
     'purchase.detail': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'client.get_all': { paramsTuple?: []; params?: {} }
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'user.get_all': { paramsTuple?: []; params?: {} }
+    'user.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   HEAD: {
     'profile.user.profile': { paramsTuple?: []; params?: {} }
@@ -39,6 +45,8 @@ export type ScannedRoutes = {
     'purchase.detail': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'client.get_all': { paramsTuple?: []; params?: {} }
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'user.get_all': { paramsTuple?: []; params?: {} }
+    'user.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   POST: {
     'auth.user.sign_up': { paramsTuple?: []; params?: {} }
@@ -52,9 +60,11 @@ export type ScannedRoutes = {
     'product.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'gateway.toggle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'gateway.update_priority': { paramsTuple: [ParamValue,ParamValue]; params: {'id': ParamValue,'priority': ParamValue} }
+    'user.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'product.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'user.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

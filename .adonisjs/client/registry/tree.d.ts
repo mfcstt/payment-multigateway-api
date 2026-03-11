@@ -35,4 +35,10 @@ export interface ApiDefinition {
     getAll: typeof routes['client.get_all']
     clientPurchases: typeof routes['client.client_purchases']
   }
+  user: {
+    getAll: typeof routes['user.get_all']
+    getById: typeof routes['user.get_by_id']
+    update: typeof routes['user.update']
+    delete: typeof routes['user.delete']
+  }
 }
