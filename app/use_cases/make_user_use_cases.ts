@@ -10,7 +10,7 @@ import { DeleteUserUseCase } from './user/delete_user_use_case.js'
 const userRepository = new LucidUserRepository()
 
 export const signUpUseCase = new SignUpUseCase(userRepository)
-export const loginUseCase = new LoginUseCase()
+export const loginUseCase = new LoginUseCase(userRepository)
 export const logoutUseCase = new LogoutUseCase()
 export const listUsersUseCase = new ListUsersUseCase(userRepository)
 export const getUserByIdUseCase = new GetUserByIdUseCase(userRepository)

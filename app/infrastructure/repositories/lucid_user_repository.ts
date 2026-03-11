@@ -11,6 +11,10 @@ export class LucidUserRepository implements UserRepositoryInterface {
     return User.find(id)
   }
 
+  async findByEmail(email: string): Promise<User | null> {
+    return User.findBy('email', email)
+  }
+
   async create(data: { fullName: string | null; email: string; password: string }): Promise<User> {
     return User.create(data)
   }
@@ -25,5 +29,9 @@ export class LucidUserRepository implements UserRepositoryInterface {
   async delete(id: number): Promise<void> {
     const user = await User.findOrFail(id)
     await user.delete()
+  }
+
+  async verifyCredentials(email: string, password: string): Promise<User> {
+    return User.verifyCredentials(email, password)
   }
 }
