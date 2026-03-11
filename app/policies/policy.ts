@@ -27,4 +27,8 @@ export default class MainPolicy extends BasePolicy {
   canManageGateways(user: User): AuthorizerResponse {
     return ['admin'].includes(user.role)
   }
+
+  canView(user: User): AuthorizerResponse {
+    return ['admin', 'manager', 'finance'].includes(user.role)
+  }
 }

@@ -32,4 +32,20 @@ test.group('PurchaseByClientUseCase Unit', () => {
 
     await assert.rejects(() => useCase.execute(999))
   })
+
+  test('should not be able to access other client transactions', async ({ assert }) => {
+    const mockClientRepository: any = {
+      findById: async (id: number) => {
+        if (id === 1) return Promise.resolve({ id: 1, name: 'Test', email: 'test@test.com' })
+        return Promise.resolve(null)
+      }
+    }
+    const mockTransactionRepository: any = {
+      findAll: async () => Promise.resolve([]),
+    }
+
+    const useCase = new PurchaseByClientUseCase(mockClientRepository, mockTransactionRepository)
+
+    await assert.rejects(() => useCase.execute(999))
+  })
 })
