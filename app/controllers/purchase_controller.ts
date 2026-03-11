@@ -34,7 +34,9 @@ async detail({ params, response }: HttpContext) {
     return response.ok(result)
   }
 
-  async refund({params, response}: HttpContext) {
+  async refund({params, response, bouncer}: HttpContext) {
+    await bouncer.with('Policy').authorize('canRefund')
+
     const id = Number(params.id)
     const result = await refundPurchaseUseCase.execute(id)
     return response.ok(result)
