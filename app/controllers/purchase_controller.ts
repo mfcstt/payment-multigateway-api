@@ -7,6 +7,7 @@ import {
   refundPurchaseUseCase,
 } from '#use_cases/make_purchase_use_cases'
 import Client from '#models/client'
+import Transaction from '#models/transaction'
 
 export default class PurchaseController {
   async create({ request, response, auth }: HttpContext) {
@@ -35,29 +36,24 @@ export default class PurchaseController {
     return response.ok(result)
   }
 
-  async detail({ params, response, auth, bouncer }: HttpContext) {
-    const id = Number(params.id)
-    const user = auth.user!
+  async detail({ params, response, bouncer }: HttpContext) {
 
-    const client = await Client.findBy('email', user.email)
-    if (!client) {
-      return response.forbidden({ message: 'Access denied' })
-    }
+  const transaction = await Transaction
+    .query()
+    .where('id', params.id)
+    .preload('client')
+    .firstOrFail()
 
-    try {
-      await bouncer.with('Policy').authorize('canView')
-    } catch {
-      await bouncer.with('Policy').authorize('canViewOwnPurchase')
-      const purchase = await purchaseDetailUseCase.execute(id)
-      if (!purchase || purchase.clientId !== client.id) {
-        return response.forbidden({ message: 'Access denied' })
-      }
-      return response.ok(purchase)
-    }
-
-    const result = await purchaseDetailUseCase.execute(id)
-    return response.ok(result)
+  try {
+    await bouncer.with('Policy').authorize('canView')
+  } catch {
+    await bouncer.with('Policy').authorize('canViewOwnTransaction', transaction)
   }
+
+  const result = await purchaseDetailUseCase.execute(transaction.id)
+
+  return response.ok(result)
+}
 
   async refund({ params, response, bouncer }: HttpContext) {
     await bouncer.with('Policy').authorize('canRefund')

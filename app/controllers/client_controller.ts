@@ -11,24 +11,18 @@ export default class ClientController {
     return response.ok(clients)
   }
 
-  async clientPurchases({ params, response, auth, bouncer }: HttpContext) {
+  async clientPurchases({ params, response, bouncer }: HttpContext) {
     await clientIdValidator.validate(params)
 
-    const clientId = Number(params.id)
-    const user = auth.user!
-    
-    const client = await Client.findBy('email', user.email)
-    if (!client || client.id !== clientId) {
-      return response.forbidden({ message: 'Access denied' })
-    }
+    const client = await Client.findOrFail(params.id)
 
     try {
       await bouncer.with('Policy').authorize('canManageClients')
     } catch {
-      await bouncer.with('Policy').authorize('canViewOwnClientPurchases')
+      await bouncer.with('Policy').authorize('canViewOwnPurchases', client)
     }
 
-    const purchases = await getClientPurchasesUseCase.execute(clientId)
+    const purchases = await getClientPurchasesUseCase.execute(client.id)
     return response.ok(purchases)
   }
 }

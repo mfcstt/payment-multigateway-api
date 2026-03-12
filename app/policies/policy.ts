@@ -1,3 +1,5 @@
+import type Client from '#models/client'
+import type Transaction from '#models/transaction'
 import User from '#models/user'
 import { BasePolicy } from '@adonisjs/bouncer'
 import type { AuthorizerResponse } from '@adonisjs/bouncer/types'
@@ -31,11 +33,11 @@ export default class MainPolicy extends BasePolicy {
     return ['admin', 'manager', 'finance'].includes(user.role)
   }
 
-  canViewOwnClientPurchases(user: User): AuthorizerResponse {
-    return user.role === 'user'
+  canViewOwnPurchases(user: User, client: Client): AuthorizerResponse {
+    return user.email === client.email
   }
 
-  canViewOwnPurchase(user: User): AuthorizerResponse {
-    return user.role === 'user'
-  }
+  canViewOwnTransaction(user: User, transaction: Transaction): AuthorizerResponse {
+  return user.email === transaction.client.email
+}
 }

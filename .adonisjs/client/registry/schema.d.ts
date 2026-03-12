@@ -143,12 +143,12 @@ export interface Registry {
     methods: ["POST"]
     pattern: '/purchases'
     types: {
-      body: ExtractBody<InferInput<(typeof import('#validators/purchase').createPurchaseValidator)>>
+      body: {}
       paramsTuple: []
       params: {}
-      query: ExtractQuery<InferInput<(typeof import('#validators/purchase').createPurchaseValidator)>>
+      query: {}
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['create']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['create']>>> | { status: 422; response: { errors: SimpleError[] } }
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/purchase_controller').default['create']>>>
     }
   }
   'purchase.list_all': {
