@@ -133,7 +133,9 @@ O projeto possui um `docker-compose.yml` que sobe:
 
 ### 🌐 Principais rotas da API
 
-> Os detalhes completos (schemas, exemplos, responses) estão na UI do Scalar em `http://localhost:3333/docs`. Abaixo um resumo organizado por contexto.
+> Os detalhes completos (schemas, exemplos, responses) estão na UI do Scalar em `http://localhost:3333/docs`. 
+> Além disso, há um arquivo do Postman disponível na raiz do projeto para facilitar a importação da coleção e o teste das rotas.
+Abaixo um resumo organizado por contexto.
 
 - **Auth (`/auth`)**
   - `POST /auth/signup` – Cria usuário e retorna token de acesso.
