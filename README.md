@@ -65,21 +65,30 @@ O projeto possui um `docker-compose.yml` que sobe:
 - **db**: MySQL 8 com banco `adonis_db` e usuário `adonis_user`.
 - **gateway-mock**: container com os dois gateways de pagamento (`3001` e `3002`) usando a imagem `matheusprotzen/gateways-mock`.
 
-#### Subindo tudo com Docker
+### Subindo tudo com Docker
 
 1. **Pré-requisitos**
    - Docker e Docker Compose instalados.
 
-2. **Subir os serviços**
-   ```bash
-   docker compose up
-   ```
+2. **Configurar variáveis de ambiente**
+   - Copiar o arquivo de exemplo:
+     ```bash
+     cp .env.example .env
+     ```
+   - Gerar a `APP_KEY` dentro do container:
+     ```bash
+     docker compose run --rm app npx node ace generate:key
+     ```
 
-3. **Aplicar migrações** (primeira vez que subir)
-   - Em outro terminal, dentro do container da aplicação:
+3. **Subir os serviços**
    ```bash
-   docker compose exec app npx node ace migration:run
-   ```
+   docker compose up -d
+
+Aplicar migrações (primeira vez que subir)
+4. Em outro terminal, dentro do container da aplicação:
+ ```bash
+docker compose exec app npx node ace migration:run
+ ```
 
 4. **Acessos principais**
    - API: `http://localhost:3333`
