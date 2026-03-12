@@ -4,6 +4,7 @@ import type { ProductRepositoryInterface } from '#domain/product/product_reposit
 import type { TransactionRepositoryInterface } from '#domain/transactions/transaction_repository_interface'
 import type { CreateTransactionInput } from '#domain/payment/payment_types'
 import { GatewayStrategy } from '#services/gateway_strategy'
+import GatewayUnavailableException from '../../exceptions/gateway_unavailable_exception.js'
 
 type PaymentData = {
   email: string
@@ -82,6 +83,6 @@ export default class ProcessPurchaseUseCase {
       }
     }
 
-    throw new Error('Todos os gateways falharam')
+    throw new GatewayUnavailableException('Todos os gateways de pagamento estão indisponíveis no momento. Por favor, tente novamente mais tarde.')
   }
 }

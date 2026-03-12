@@ -16,7 +16,7 @@ export default class ClientController {
 
     const clientId = Number(params.id)
     const user = auth.user!
-
+    
     const client = await Client.findBy('email', user.email)
     if (!client || client.id !== clientId) {
       return response.forbidden({ message: 'Access denied' })

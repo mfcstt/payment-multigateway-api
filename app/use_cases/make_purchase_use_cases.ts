@@ -20,4 +20,7 @@ export const processPurchaseUseCase = new ProcessPurchaseUseCase(
 )
 export const listAllPurchasesUseCase = new ListAllPurchasesUseCase(transactionRepository)
 export const purchaseDetailUseCase = new PurchaseDetailUseCase(transactionRepository)
-export const refundPurchaseUseCase = new RefundPurchaseUseCase(gatewayRepository, transactionRepository)
+export const refundPurchaseUseCase = new RefundPurchaseUseCase(
+  gatewayRepository,
+  transactionRepository
+)
