@@ -7,6 +7,6 @@ export const controllers = {
   Client: () => import('#controllers/client_controller'),
   Gateway: () => import('#controllers/gateway_controller'),
   Product: () => import('#controllers/product_controller'),
-  Purchase: () => import('#controllers/purchase_controller'),
   User: () => import('#controllers/user_controller'),
+  Purchase: () => import('#controllers/purchase_controller'),
 }

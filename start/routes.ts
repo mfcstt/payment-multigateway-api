@@ -10,10 +10,8 @@
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 import { controllers } from '#generated/controllers'
-
-router.get('/', () => {
-  return { hello: 'world' }
-})
+import AutoSwagger from 'adonis-autoswagger'
+import openapi from '#config/openapi'
 
 router.group(() => {
   router
@@ -80,3 +78,11 @@ router
   })
   .prefix('/users')
   .use(middleware.auth())
+
+router.get('/openapi', async () => {
+  return AutoSwagger.default.docs(router.toJSON(), openapi)
+})
+
+router.get('/docs', async () => {
+  return AutoSwagger.default.scalar('/openapi')
+})

@@ -26,6 +26,14 @@ export type ScannedRoutes = {
     'user.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'user.delete': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
+  POST: {
+    'auth.user.sign_up': { paramsTuple?: []; params?: {} }
+    'auth.user.login': { paramsTuple?: []; params?: {} }
+    'auth.user.logout': { paramsTuple?: []; params?: {} }
+    'product.create': { paramsTuple?: []; params?: {} }
+    'purchase.create': { paramsTuple?: []; params?: {} }
+    'purchase.refund': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+  }
   GET: {
     'profile.user.profile': { paramsTuple?: []; params?: {} }
     'product.get_all': { paramsTuple?: []; params?: {} }
@@ -47,14 +55,6 @@ export type ScannedRoutes = {
     'client.client_purchases': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'user.get_all': { paramsTuple?: []; params?: {} }
     'user.get_by_id': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-  }
-  POST: {
-    'auth.user.sign_up': { paramsTuple?: []; params?: {} }
-    'auth.user.login': { paramsTuple?: []; params?: {} }
-    'auth.user.logout': { paramsTuple?: []; params?: {} }
-    'product.create': { paramsTuple?: []; params?: {} }
-    'purchase.create': { paramsTuple?: []; params?: {} }
-    'purchase.refund': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   PUT: {
     'product.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
